@@ -7,7 +7,7 @@ def simulation1(A,m,r,ntrial,k):
     """
     :param A: number of all patients
     :param m: number of buckets
-    :param r: ratio of umber of patients satisfying certain criteria t0number of all patients
+    :param r: ratio of number of patients satisfying certain criteria to number of all patients
     :param ntrial: number of trails
     :param k: K in K-anonymity
     :return: Expectation by applying approximation1

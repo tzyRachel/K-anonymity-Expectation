@@ -41,7 +41,7 @@ def Exp1(A,m,r,k):
             expectation = expectation + p*Decimal(rv_a.pmf(a))
         else:
             expectation = expectation + Decimal(rv_a.pmf(a))
-    return expectation*m
+    return round(expectation*m,5)
 
 if __name__ == '__main__':
     A = 10**4

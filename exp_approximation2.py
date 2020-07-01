@@ -24,7 +24,7 @@ def Exp2(A,m,r,k):
     for a in range(int(lb_a), int(ub_a)+1):
         # Compute the expected value by evaluating at the mean value
         expectation = expectation + Prob_en(k,a,round(a*r))*Decimal(rv_a.pmf(a))
-    return expectation*m
+    return round(expectation*m,5)
 
 if __name__ == '__main__':
     A = 10**6
