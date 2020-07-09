@@ -28,7 +28,7 @@ def Exp2(A,m,r,k):
 
 if __name__ == '__main__':
     A = 10**6
-    m = 100# num of partition
+    m = 1000# num of partition
     p = 1/m
     k = 10
     r = 0.005

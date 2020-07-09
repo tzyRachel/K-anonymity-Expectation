@@ -13,20 +13,19 @@ def simulation1(A,m,r,ntrial,k):
     :return: Expectation by applying approximation1
     """
     B = int(A*r)  # number of patients satisfying certain criteria
-    a_total = 1-np.random.rand(ntrial, A) # randomly generat hashed value of set A for all trials
-    a_total_log = np.floor(-np.log2(a_total)) # take log2 on set A
     result = 0 # total number of collision in all trials
     b_temp = np.random.choice(np.arange(0, A, 1), B, replace=False) # randomly generate patients satisfying certain criteria
-    partition_total = np.random.randint(0, m, size=(ntrial, A)) # randomly divide all patients into m buckets
+    partition_total = np.random.multinomial(A, [1 / m] * m, size=ntrial)
     # run all trials
     for n in range(0, ntrial):
         partition = partition_total[n]
         e = [] # set of collision
-        a_temp_log = a_total_log[n]
+        current_index = 0
         for i in range(0, m):
-            itemindex = np.where(partition == i)
-            x = a_temp_log[itemindex] # represent A1 (first bucket)
-            y = a_temp_log[np.intersect1d(b_temp, itemindex)] # represent B1
+            x = np.floor(-np.log2(1 - np.random.rand(partition[i])))
+            y_size = np.size(np.intersect1d(b_temp,np.arange(current_index,current_index + partition[i],1)))
+            y = x[0:y_size]
+            current_index = current_index + partition[i]
             if np.size(y) == 0 or np.size(x) == 0:
                 e.append(0)
             else:
@@ -41,11 +40,11 @@ def simulation1(A,m,r,ntrial,k):
 
 if __name__ == '__main__':
 
-    A = 10**6
-    r = 0.005
+    A = 10**4
+    r = 0.1
     B = round(A*r)
-    m = 666
+    m = 100
     p = 1/m
     k = 10
     ntrial = 100
-    simulation1(A,m,r,ntrial,k)
+    print(simulation1(A,m,r,ntrial,k))

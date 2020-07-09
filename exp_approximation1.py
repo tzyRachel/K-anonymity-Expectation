@@ -1,12 +1,11 @@
 #!/usr/bin/python
 #Expectation with partition
 from decimal import *
-from Prob_simple_version import Prob,Prob_en
-from scipy.special import gammaln
+from Prob_simple_version import Prob_en
 import math
 import time
 from scipy.stats import hypergeom,binom
-getcontext().prec = 100
+getcontext().prec = 30
 
 # E(|e| <= k)
 def Exp1(A,m,r,k):
