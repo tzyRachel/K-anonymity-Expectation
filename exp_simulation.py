@@ -32,8 +32,7 @@ def simulation1(A,m,r,ntrial,k):
                 index = np.where(x == np.max(y))
                 e.append(np.size(index))
         e = np.array(e)
-        index = np.where(e <= k)
-        result = result + np.size(index)
+        result = result + np.size(np.where((0 < e) & (e <= k)))
 
     # mean value of n trials
     return result/ntrial
