@@ -16,7 +16,7 @@ position x.
 (3) Randomly partition all patients into m buckets, say A1,...,Am. Simultaneously
 patients who match the query are also partitioned into m buckets, say B1,...,Bm.
 
-(4) Find the number of non buckets 'k-anonymous' among B1,...,Bm.
+(4) Find the number of non'k-anonymous' buckets among B1,...,Bm.
 
 
 #### **Directory structure**
