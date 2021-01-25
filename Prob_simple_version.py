@@ -27,7 +27,7 @@ def Prob(n, A, B):
         sums = sums + subsum
     return sums
 
-#P(|e|<=n) by accurate
+#P(|e|< n) by accurate
 def Prob_en(n,A,B):
   if A==0:
     return 1
@@ -38,7 +38,7 @@ def Prob_en(n,A,B):
   elif A<n:
     return 1
   sums = 0
-  for i in range(1,n+1):
+  for i in range(1,n):
     sums = sums+Prob(i,A,B)
   return sums
 
