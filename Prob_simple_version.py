@@ -2,7 +2,6 @@
 #Probability in simple version
 from scipy.special import comb
 from decimal import *
-import math
 getcontext().prec = 100
 
 def f(A, B, k, i):
@@ -27,18 +26,18 @@ def Prob(n, A, B):
         sums = sums + subsum
     return sums
 
-#P(|e|< n) by accurate
+#P(0 < |e|< n) by accurate
 def Prob_en(n,A,B):
-  if A==0:
+  if A == 0:
     return 1
-  elif A!=0 and B==0:
+  elif A != 0 and B == 0:
     return 1
-  elif A!=0 and B!=0 and n==0:
+  elif A != 0 and B != 0 and n == 0:
     return 0
-  elif A<n:
+  elif A < n:
     return 1
   sums = 0
-  for i in range(1,n):
-    sums = sums+Prob(i,A,B)
+  for i in range(1, n):
+    sums = sums + Prob(i, A, B)
   return sums
 

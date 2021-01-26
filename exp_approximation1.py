@@ -42,8 +42,8 @@ def Exp1(A,m,r,k):
                 rv_b = hypergeom(A, a, B)
                 (lb_b, ub_b) = rv_b.interval(alpha)
                 # Rule out the case that there is no collision
-                lb_b = max(1,lb_b)
-                # Compute P(|e|<=k | |A1|)
+                lb_b = max(1, lb_b)
+                # Compute P(|e| < k | |A1|)
                 p = P(lb_b, ub_b, k, rv_b, a)
                 #Compute Expectation
                 expectation = expectation + p*Decimal(rv_a.pmf(a))
@@ -56,21 +56,21 @@ def Exp1(A,m,r,k):
             if a > k:
                 # Restrit an interval for B1 with probability greater than 0.99995
                 rv_b = hypergeom(A, a, B)
-                (lb_b,ub_b) = rv_b.interval(0.99995)
+                (lb_b, ub_b) = rv_b.interval(0.99995)
                 # Compute P(|e|<=k | |A1|)
                 p = P(lb_b, ub_b, k, rv_b, a)
                 #Compute Expectation
                 expectation = expectation + p*Decimal(rv_a.pmf(a))
             else:
                 expectation = expectation + Decimal(rv_a.pmf(a))
-    return round(expectation*m,5)
+    return round(expectation*m, 5)
 
 if __name__ == '__main__':
-    A = 10**4
-    m = 500# num of partition
+    A = 10000000
+    m = 100# num of partition
     p = 1/m
     k = 10
-    r = 0.1
+    r = 0.05
     B = int(A*r)
 
     print(Exp1(A, m, r, k))
